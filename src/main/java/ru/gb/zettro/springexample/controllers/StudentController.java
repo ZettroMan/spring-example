@@ -22,8 +22,7 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public String getStudentById(Model model, @PathVariable Long id) {
-        Student student = studentService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student with id=" + id + " not found"));
-        model.addAttribute("student", student);
+        model.addAttribute("student", studentService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student with id=" + id + " not found")));
         return "student";
     }
 
